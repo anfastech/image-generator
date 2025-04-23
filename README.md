@@ -16,6 +16,7 @@ cd image-generator
 ### 2. Write Installed Packages to `requirements.txt`
 
 ```bash
+pip install flask gradio_client
 pip freeze > requirements.txt
 ```
 
