@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from gradio_client import Client
+from flask_cors import CORS 
 import datetime
 import shutil
 import os
 
 app = Flask(__name__)
+CORS(app)
 
 # Connect to Hugging Face Stable Diffusion space
 client = Client("stabilityai/stable-diffusion")
@@ -12,6 +14,25 @@ client = Client("stabilityai/stable-diffusion")
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route('/list-static-images')
+def list_static_images():
+    import os
+    static_dir = os.path.join(app.root_path, 'static')
+    try:
+        files = [f for f in os.listdir(static_dir) if os.path.isfile(os.path.join(static_dir, f))]
+        return jsonify(files)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+@app.route('/api/placeholder/<int:width>/<int:height>')
+def placeholder(width, height):
+    # You could return an actual placeholder image here
+    return jsonify({
+        "message": "Placeholder endpoint",
+        "width": width,
+        "height": height
+    })
 
 @app.route("/generate", methods=["POST"])
 def generate():
