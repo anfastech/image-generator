@@ -16,21 +16,28 @@ def index():
 @app.route("/generate", methods=["POST"])
 def generate():
     try:
-        prompt = request.form.get("prompt", "A futuristic city at sunset with flying cars.")
+        prompt = request.form.get("prompt", "A futuristic ")
         negative = "blurry, low quality, ugly"
         scale = 9
+        api_name = "infer"
+        api_dic=f"/{api_name}"
 
         # Generate image
         result = client.predict(
             prompt=prompt,
             negative=negative,
             scale=scale,
-            api_name="/infer"
+            api_name=api_dic
         )
 
         # result is a list of dicts with 'image' key
-        image_info = result[0]  # Just get the first image
-        src_path = image_info['image']
+
+        if result and 'image' in result[0]:
+            image_info = result[0]
+            src_path = image_info['image']
+        else:
+            src_path = None
+        temp = "anfas"
 
         # Save to static directory
         if not os.path.exists("static"):
@@ -38,7 +45,7 @@ def generate():
 
         now = datetime.datetime.now()
         timestamp = now.strftime("%Y%m%d%H%M%S")
-        filename = f"Img_{timestamp}.png"
+        filename = f"{api_name}_Img_{timestamp}.png"
         dst_path = os.path.join("static", filename)
         shutil.copy(src_path, dst_path)
 
