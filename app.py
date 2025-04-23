@@ -19,7 +19,7 @@ def generate():
         prompt = request.form.get("prompt", "A futuristic ")
         negative = "blurry, low quality, ugly"
         scale = 9
-        api_name = "infer"
+        api_name = "infer_2"
         api_dic=f"/{api_name}"
 
         # Generate image

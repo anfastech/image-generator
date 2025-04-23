@@ -4,14 +4,42 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
-    <h1>Generate an Image</h1>
-    <form action="/generate" method="post">
-        <label for="prompt">Prompt:</label>
-        <input type="text" name="prompt" placeholder="A cat with sunglasses" value="Design a minimalist sitting room that exudes tranquility and elegance. Incorporate room decor items that are visually captivating and evoke a sense of emotional resonance. Your design should prioritize simplicity, clean lines, and a harmonious color palette. Consider how each element contributes to creating a serene and inviting atmosphere for relaxation and contemplation" required >
-        <br>
-        <button type="submit">Generate Image</button>
-    </form>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
+        <div>
+            <h1 class="text-center text-3xl font-extrabold text-gray-900">Generate an Image</h1>
+            <p class="mt-2 text-center text-sm text-gray-600">
+                Enter your prompt below to create a unique image
+            </p>
+        </div>
+        <form class="mt-8 space-y-6" action="/generate" method="post">
+            <div class="rounded-md shadow-sm -space-y-px">
+                <div>
+                    <label for="prompt" class="sr-only">Prompt</label>
+                    <textarea 
+                        id="prompt" 
+                        name="prompt" 
+                        rows="5"
+                        class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        placeholder="Describe your image here..."
+                        required
+                    >Design a minimalist sitting room that exudes tranquility and elegance. Incorporate room decor items that are visually captivating and evoke a sense of emotional resonance. Your design should prioritize simplicity, clean lines, and a harmonious color palette. Consider how each element contributes to creating a serene and inviting atmosphere for relaxation and contemplation</textarea>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out">
+                    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                        <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                    Generate Image
+                </button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
