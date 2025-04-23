@@ -33,10 +33,6 @@ def generate():
         src_path = image_info['image']
 
         # Save to static directory
-        # Ensure the 'static' directory exists
-        if not os.path.exists("static"):
-            os.makedirs("static")
-
         now = datetime.datetime.now()
         timestamp = now.strftime("%Y%m%d%H%M%S")
         filename = f"Img_{timestamp}.png"
