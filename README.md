@@ -9,7 +9,7 @@ This is a simple web-based image generator built with **Flask** and **Gradio Cli
 ```bash
 git clone https://github.com/anfastech/image-generator.git
 cd image-generator
--`-
+```
 
 ---
 
@@ -17,7 +17,7 @@ cd image-generator
 
 ```bash
 pip freeze > requirements.txt
--`-
+```
 
 ---
 
@@ -33,7 +33,7 @@ source venv/bin/activate
 # On Windows
 python -m venv venv
 venv\Scripts\activate
--`-
+```
 
 ---
 
@@ -41,7 +41,7 @@ venv\Scripts\activate
 
 ```bash
 pip install -r requirements.txt
--`-
+```
 
 ---
 
@@ -49,7 +49,7 @@ pip install -r requirements.txt
 
 ```bash
 python app.py
--`-
+```
 
 Your app will run on: [http://localhost:8080](http://localhost:8080)
 
